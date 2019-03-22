@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">This is an example project demonstrating a few key concepts in modern Microsoft web stack engineering (at the time of this writing).</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Front End</h2>
+        <p>
+            This project separates the front end by isolating it to only the ASP.NET MVC project (which handles session, facilitates login enforcement,
+            and serves up the home page and application page). This is largely limited to simply serving up the front end markup, css, js and contains no
+            direct calls to a database for anything whatsoever. One additional configuration to this layer that would be benefical, but is not demonstrated here,
+            is configuring this layer to utilize a distributed cache for its native session management (e.g. Redis). This front end session management is secured using
+            cookies, while it also obtains an OAuth2 token in order to communicate securely with the API layer.
+        </p>
+        <p>The front end browser-side framework is utilizing AngularJS 1.x with HTML5 and CSS3</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Middle-Tier/API</h2>
+        <p>
+            The middle-tier serves as the interface for all backend processing. It utilizes as separate site built in WebAPI in order to expose a RESTful / JSON-based interface
+            to backend processing. This layer is secured using a required OAuth2 bearer token for each call. It is this layer that is also demonstrating the use of the
+            following frameworks and patterns:
+            <ul>
+                <li>Ninject - IoC container</li>
+                <li>SignalR - web socket framework</li>
+                <li>CQRS - demonstrating a separation between pure query operations and persistence operations</li>
+                <li>Domain Driven Design (DDD) - demonstrating a simplified implementation of rich domain entities</li>
+            </ul>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Back End</h2>
+        <p>
+            The back end is essentially the data access layer to the persistence points of the application. It is utilizing Entity Framework 6.1.3 Code First with Migrations.
+            While it is defaulted in this example to use SQL Server, there is intentionally no database-specific code (views, stored procedures, functions, etc.), and so this
+            layer is fairly datastore-agnostic as it's just working with data structures (using a table per type inheritence) which is queried utilizing LINQ.
+        </p>
+    </div>
+</div>

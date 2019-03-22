@@ -1,0 +1,35 @@
+﻿@model ESTest.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<div class="container-fluid">
+    @using (Html.BeginForm("Login", "Home"))
+    {
+        @Html.HiddenFor(d => d.ReturnUrl)
+        <div class="row">
+            <div class="col-xs-2"><label class="label label-default">User Name:</label></div>
+            <div class="col-xs-4">@Html.TextBoxFor(d => d.Username)</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2"><label class="label label-default">Password:</label></div>
+            <div class="col-xs-4">@Html.PasswordFor(d => d.Password)</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <input type="submit" value="Log In" />
+            </div>
+        </div>
+        <div class="row"><div class="col-xs-4">&nbsp;</div></div>
+        <div class="row">
+            <div class="col-xs-4">
+                @if (!string.IsNullOrWhiteSpace(Model.Message))
+                {
+                    @Html.LabelFor(d => d.Message, new { @class = "label-danger" })
+                }
+            </div>
+        </div>
+    }
+</div>
+
